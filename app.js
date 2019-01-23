@@ -1,8 +1,7 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  res.setHeader('Content-Type', 'text/html');
-  res.write(`
+  const body = `
     <html>
       <head>
         <title>API Repsonse</title>
@@ -11,7 +10,11 @@ const server = http.createServer((req, res) => {
         <h1>API Response</h1>
       </body>
     </html>
-  `);
+  `;
+  res.setHeader('Content-Length', body.length);
+  res.setHeader('Content-Type', 'text/html');
+  res.status(200);
+  res.write(body);
   res.end();
 });
 
