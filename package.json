@@ -1,0 +1,24 @@
+{
+  "name": "lft-concept-api",
+  "version": "1.0.1",
+  "description": "Standalone API template",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LfT-Concept/lft-concept-api.git"
+  },
+  "keywords": [
+    "lftconcept",
+    "api"
+  ],
+  "author": "lft-concept",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LfT-Concept/lft-concept-api/issues"
+  },
+  "homepage": "https://github.com/LfT-Concept/lft-concept-api#readme"
+}

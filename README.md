@@ -86,3 +86,67 @@ Obtain the docker id of your container, and use this command with the `{containe
 ```sh
 docker stop `{containerid}`
 ```
+
+### Adding npm
+
+Node Package Manager (npm) will be used to install dev and production dependencies as we proceed, so although it isn't required at this minimalist stage, it needs to be installed.
+
+```sh
+npm init
+```
+
+You are then prompted for a number of answers, most of which give default options in brackets which you can just hit return to agree with.
+
+```sh
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help json` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg> --save` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+name: (lft-concept-api) lft-concept-api
+version: (1.0.0) 1.0.0
+description: Standalone API template
+entry point: (app.js)
+test command:
+git repository: (https://github.com/LfT-Concept/lft-concept-api.git)
+keywords: lftconcept,api
+author: lft-concept
+license: (ISC)
+```
+
+And then one final display of JSON file that it will create as package.json, and a question 'is that ok? (yes)' Hit return to agree.
+
+### Remeber to add a start script
+
+The default script that is created in the package.json is for 'test'. Bizarrely, despite asking what is the entry point, it doesn't create a start script automatically. In this case we need to add one, so that the updated 'script' node looks like this.
+
+```json
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+```
+
+### Update to Dockerfile
+
+Now that we have installed npm, we need the docker container to reflect this. The first is to change the default command to run npm start. We also want to create a working directory, move package.json over on its own so that we can run npm install, and cache this state. And finally we leave the copy of teh rest of the files to occur after.
+
+```docker
+# Specify a base image
+FROM node:alpine
+
+WORKDIR /usr/app
+
+# Install dependencies
+COPY ./package.json ./
+RUN npm install
+COPY ./ ./
+
+# Default command
+CMD [ "npm", "start" ]
+```
