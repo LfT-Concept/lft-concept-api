@@ -134,7 +134,7 @@ The default script that is created in the package.json is for 'test'. Bizarrely,
 
 ### Update to Dockerfile
 
-Now that we have installed npm, we need the docker container to reflect this. The first is to change the default command to run npm start. We also want to create a working directory, move package.json over on its own so that we can run npm install, and cache this state. And finally we leave the copy of teh rest of the files to occur after.
+Now that we have installed npm, we need the docker container to reflect this. The first is to change the default command to run npm start. We also want to create a working directory, move package.json over on its own so that we can run npm install, and cache this state. And finally we leave the copy of the rest of the files to occur after.
 
 ```docker
 # Specify a base image
@@ -150,3 +150,70 @@ COPY ./ ./
 # Default command
 CMD [ "npm", "start" ]
 ```
+
+### Add test and test framework
+
+One thing we want to inject early is a test framework. There are somne good posts on testing nodejs, including best practices, and links are included here:
+
+- [Node.js & JavaScript Testing Best Practices][njstbp] by Yoni Goldberg
+- [Unit Testing and TDD in Node.js][uttddnjs] by David Tang
+- [Learn Node.js, Unit 9: Unit testing the IBM way][lnjsut] by J Steven Perry
+
+Our chosen framework will be [Mocha][mocha]. Why? Well it seems to have won the defacto testing framework award for nodejs, and who are we to argue. Most articles seem to indicate installing flobally, but this is not required. Just install for dev in the project.
+
+```sh
+npm install --save-dev mocha
+```
+
+To validate that it is working, we can easily add a new test.js file in a new test folder. The basic test (not testing existing functionality yet), will just runs its own logic.
+
+```test
+var assert = require('assert');
+describe('Array', function() {
+  describe('#indexOf()', function() {
+    it('should return -1 when the value is not present', function() {
+      assert.equal([1,2,3].indexOf(4), -1);
+    });
+  });
+});
+```
+
+Back in the terminal to run this
+
+```sh
+./node_modules/mocha/bin/mocha
+```
+
+And should return the results
+
+```sh
+  Array
+    #indexOf()
+      ✓ should return -1 when the value is not present
+```
+
+### Run tests from script
+
+That's way too complicated to remeber everytime we want to run tests, so instead we add a script. Replace the existign test script to run mocha.
+
+```sh
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
+  },
+```
+
+And to execute them
+
+```sh
+npm run test
+```
+
+Result is the same as before when running the long winded way
+
+### References
+
+[njstbp]: <https://medium.com/@me_37286/yoni-goldberg-javascript-nodejs-testing-best-practices-2b98924c9347>
+[uttddnjs]: <https://www.codementor.io/davidtang/unit-testing-and-tdd-in-node-js-part-1-8t714s877>
+[lnjsut]: <https://developer.ibm.com/tutorials/learn-nodejs-unit-testing-in-nodejs/>
+[mocha]: <https://mochajs.org/>
