@@ -1,6 +1,8 @@
 # lft-concept-api
 Standalone API template
 
+[![Build Status](https://travis-ci.org/LfT-Concept/lft-concept-api.svg?branch=master)](https://travis-ci.org/LfT-Concept/lft-concept-api)
+
 ## Set Up
 
 ### Starting from scratch
