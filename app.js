@@ -11,9 +11,10 @@ const server = http.createServer((req, res) => {
       </body>
     </html>
   `;
-  res.setHeader('Content-Length', body.length);
-  res.setHeader('Content-Type', 'text/html');
-  res.status(200);
+  res.writeHead(200, {
+    'Content-Length': body.length,
+    'Content-Type': 'text/html'
+  });
   res.write(body);
   res.end();
 });
