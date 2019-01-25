@@ -15,14 +15,18 @@ const testPage = `
 `;
 
 const server = http.createServer((req, res) => {
-  if (req.url === path.normalize('/')) {
-    res.end('This connection is alive!');
-  } else if (req.url === path.normalize('/test')) {
-    res.end(testPage);
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.end("this page doesn't exist");
-  }
+  res.end(testPage);
 });
 
 server.listen(3000);
+
+
+// just hold on to this for a moment
+// if (req.url === path.normalize('/')) {
+//   res.end('This connection is alive!');
+// } else if (req.url === path.normalize('/test')) {
+//   res.end(testPage);
+// } else {
+//   res.writeHead(404, { 'Content-Type': 'text/plain' });
+//   res.end("this page doesn't exist");
+// }
