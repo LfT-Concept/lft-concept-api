@@ -1,8 +1,9 @@
-var assert = require('assert');
+var chai = require('chai');
+var expect = chai.expect;
 
 // basic response
 describe("smoke test", function() {
   it("checks equality", function() {
-    assert.equal(true, true);
+    expect(true).to.be.true;
   });
 });

@@ -156,6 +156,7 @@ CMD [ "npm", "start" ]
 One thing we want to inject early is a test framework. There are somne good posts on testing nodejs, including best practices, and links are included here:
 
 - [Node.js & JavaScript Testing Best Practices][njstbp] by Yoni Goldberg
+- [How to test nodejs apps using mocha chai and sinonjs][njsut] by Joy Warugu
 - [Unit Testing and TDD in Node.js][uttddnjs] by David Tang
 - [Learn Node.js, Unit 9: Unit testing the IBM way][lnjsut] by J Steven Perry
 
@@ -214,6 +215,7 @@ Result is the same as before when running the long winded way
 ### References
 
 [njstbp]: <https://medium.com/@me_37286/yoni-goldberg-javascript-nodejs-testing-best-practices-2b98924c9347>
+[njsut]: <https://scotch.io/tutorials/how-to-test-nodejs-apps-using-mocha-chai-and-sinonjs>
 [uttddnjs]: <https://www.codementor.io/davidtang/unit-testing-and-tdd-in-node-js-part-1-8t714s877>
 [lnjsut]: <https://developer.ibm.com/tutorials/learn-nodejs-unit-testing-in-nodejs/>
 [mocha]: <https://mochajs.org/>
