@@ -1,9 +1,9 @@
 const express = require('express');
-const router = express.Router();
+const router = new express.Router();
 
 router.get('/admin/users', (req, res, next) => {
   console.log('Get admin users page');
-  res.send('<h1>Users (admin)</h1>')
+  res.send('<h1>Users (admin)</h1>');
 });
 
 router.use('/', (req, res, next) => {

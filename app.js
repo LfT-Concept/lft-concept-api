@@ -8,7 +8,7 @@ const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use("/", (req, res, next) => {
+app.use('/', (req, res, next) => {
   console.log(req.originalUrl);
   next();
 });
@@ -18,7 +18,7 @@ app.use(shopRoutes);
 
 app.use('/', (req, res, next) => {
   console.log('This is error');
-  res.status(404).send('<h1>Not found</h1>')
+  res.status(404).send('<h1>Not found</h1>');
 });
 
 app.listen(3000);
