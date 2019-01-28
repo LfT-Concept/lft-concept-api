@@ -1,5 +1,5 @@
 module.exports = {
-    getIndexPage: (req, res) => {
-        res.send("Hello!")
-    }
-}
+  getIndexPage: (r, t) => {
+    t.send('Hello!');
+  }
+};
