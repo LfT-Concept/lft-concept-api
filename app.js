@@ -18,7 +18,7 @@ app.use(shopRoutes);
 
 app.use('/', (req, res, next) => {
   console.log('This is error');
-  res.send(404, '<h1>Not found</h1>')
+  res.status(404).send('<h1>Not found</h1>')
 });
 
 app.listen(3000);
