@@ -6,4 +6,10 @@ router.get('/admin/users', (req, res, next) => {
   res.send('<h1>Users (admin)</h1>')
 });
 
+router.use('/', (req, res, next) => {
+  console.log('Finish admin-users section');
+  next();
+});
+
+
 module.exports = router;

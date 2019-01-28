@@ -15,4 +15,9 @@ router.get('/admin/', (req, res, next) => {
   res.send('<h1>This is admin section</h1>')
 });
 
+router.use('/', (req, res, next) => {
+  console.log('Finish admin section');
+  next();
+});
+
 module.exports = router;
