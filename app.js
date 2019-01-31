@@ -1,23 +1,27 @@
-const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const testPage = `
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="utf-8" />
-    </head>
-    <body>
-      <h1>browser test</h1>
-      <script>console.log('you can serve up scripts with this')</script>
-    </body>
-  </html>
-`;
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.end(testPage);
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/', (req, res, next) => {
+  console.log(req.originalUrl);
+  next();
 });
 
-server.listen(3000);
+app.use(adminRoutes);
+app.use(shopRoutes);
+
+app.use('/', (req, res, next) => {
+  console.log('This is error');
+  res.status(404).send('<h1>Not found</h1>');
+});
+
+app.listen(3000);
 
 
 // just hold on to this for a moment

@@ -4,7 +4,7 @@
   "description": "Standalone API template",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "nyc mocha --recursive",
     "lint": "eslint .",
     "lint-fix": "npm run lint -- --fix",
@@ -29,25 +29,43 @@
     "eslint": "^5.12.1",
     "eslint-config-google": "^0.11.0",
     "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
     "nyc": "^13.1.0",
     "sinon": "^7.2.3"
   },
   "eslintConfig": {
-    "extends": ["eslint:recommended", "google"],
+    "extends": [
+      "eslint:recommended",
+      "google"
+    ],
     "env": {
-        "node": true,
-        "mocha": true
+      "node": true,
+      "mocha": true
     },
     "parserOptions": {
       "ecmaVersion": 6
     },
-    "rules" : {
-      "max-len": [2, 120, 4, {"ignoreUrls": true}],
+    "rules": {
+      "max-len": [
+        2,
+        120,
+        4,
+        {
+          "ignoreUrls": true
+        }
+      ],
       "no-console": 0,
-      "comma-dangle": ["error", "never"]
+      "comma-dangle": [
+        "error",
+        "never"
+      ]
     }
   },
   "eslintIgnore": [
     "node_modules"
-  ]
+  ],
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
 }
