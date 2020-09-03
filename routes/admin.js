@@ -3,7 +3,7 @@ const router = new express.Router();
 
 const adminUsersRoutes = require('./admin-users');
 
-router.use('/admin', (req, res, next) => {
+router.use('/', (req, res, next) => {
   console.log('Authenticate admin');
   next();
 });
